@@ -38,9 +38,9 @@ Nothing to show you. It works behind the scenes.
 
 ### 1.1
 Worked pretty well, but now it's awesome:
-- removed dependency from external libraries (except for jQuery which is anyway loaded by WP backend)
-- enabled shortcut in Themes and Plugins editor
-- added tooltip on shortcut-enabled buttons
+* removed dependency from external libraries (except for jQuery which is anyway loaded by WP backend)
+* enabled shortcut in Themes and Plugins editor
+* added tooltip on shortcut-enabled buttons
 
 ### 1.0
 First version. Should work already pretty well.
