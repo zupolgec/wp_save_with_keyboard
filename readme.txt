@@ -1,8 +1,13 @@
-# Save with keyboard
+=== Plugin Name ===
+Contributors: zupolgec
+Tags: save, keyboard, shortcut, ctrl-s, cmd-s, ctrl+s, cmd+s
+Requires at least: 2.6
+Tested up to: 3.2.1
+Stable tag: trunk
 
 This plugin lets you save your posts and pages in the most natural way: pressing Ctrl+s (or Cmd+s on Mac).
 
-## Description
+== Description ==
 
 I've coded this plugin because I was tired of pressing Cmd+s and then realize Chrome was trying to save the whole webpage :S
 
@@ -13,22 +18,22 @@ My plugin loads the awesome [Jwerty library](http://keithcirkel.co.uk/jwerty/) o
 page load on the other admin pages.
 It is also *so* smart that saves as draft unpublished posts/pages and updates the ones that are already public.
 
-## Installation
+== Installation ==
 
 1. Upload `save-with-keyboard.php` and `jwerty.min.js` to the `/wp-content/plugins/save-with-keyboard` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
-## Frequently Asked Questions
+== Frequently Asked Questions ==
 
-### Is really so simple to install and use?
+= Is really so simple to install and use? =
 
 You can bet it is.
 
-## Screenshots
+== Screenshots ==
 
 Nothing to show you. It works behind the scenes.
 
-## Changelog
+== Changelog ==
 
-### 1.0
+= 1.0 =
 First version. Should work already pretty well.
