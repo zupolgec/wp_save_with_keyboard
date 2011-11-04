@@ -14,7 +14,7 @@ Twitter: @zupolgec
  */
 
 function spwk_enqueue_script($hook) {
-    if( ! in_array($hook, array('post.php', 'post-new.php') )
+    if( ! in_array($hook, array('post.php', 'post-new.php')) )
         return false;
 	
     wp_enqueue_script( 'jwerty', plugins_url('/jwerty.min.js', __FILE__) );
