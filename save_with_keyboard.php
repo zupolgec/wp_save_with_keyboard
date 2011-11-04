@@ -2,31 +2,41 @@
 /*
 Plugin Name: Save with keyboard
 Plugin URI: http://wordpress.org/extend/plugins/save-with-keyboard
-Description: This plugin lets you save your posts and pages in the most natural way: pressing Ctrl+s (or Cmd+s on Mac).
+Description: This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 Author: Mattia Trapani (zupolgec)
+Author URI: http://mtrapani.com
 Version: 1.0
 License: WTFPL (http://sam.zoy.org/wtfpl)
-Twitter: @zupolgec
 */
 
-/*
- * Detects Ctrl+s and Cmd+s then saves the page/post (as draft if unpublished).
- */
-
-function swk_enqueue_script($hook) {
-    if( ! in_array($hook, array('post.php', 'post-new.php')) )
-        return false;
+if( is_admin() ) {
+	// array of admin pages and buttons to "click" with Ctrl+S in those pages
+	$button_to_click = array(
+		'post.php' => 'publish',
+		'post-new.php' => 'save-post',
+		'theme-editor.php' => 'submit',
+		'plugin-editor.php' => 'submit'
+	);
 	
-    wp_enqueue_script( 'jwerty', plugins_url('/jwerty.min.js', __FILE__) );
-	add_action( 'admin_head', 'swk_add_script' );
+	foreach($button_to_click as $page => $button_id) {
+		add_action( 'admin_footer-'.$page, 'swk_add_script' );
+	}
 }
-add_action( 'admin_enqueue_scripts', 'swk_enqueue_script' );
 
-function swk_add_script() { ?>
+function swk_add_script() {
+	global $pagenow, $button_to_click;
+	?>
 	<script>
-		jwerty.key('ctrl+s/cmd+s', function() {
-			( jQuery('#save-post').length != 0 ) ? jQuery('#save-post').click() : jQuery('#publish').click();
-			return false;
+		var button_id = "<?php echo $button_to_click[$pagenow]; ?>";
+		
+		jQuery('#'+button_id).attr('title', 'Ctrl+S or Cmd+S to click');
+		
+		jQuery(document).keydown( function(e) {
+			if( (e.keyCode || e.which) == 83 && (e.ctrlKey || e.metaKey) ) {
+				jQuery('#'+button_id).click();
+				
+				return false;
+			}
 		});
 	</script>
 <?php
