@@ -34,7 +34,20 @@ In New Page and New Post pages (saving as draft), in Page and Post edit pages (u
 
 Nothing to show you. It works behind the scenes.
 
+## Authors
+
+Initial development by @zupolgec, refactoring for v2 by @sjeiti
+
 ## Changelog
+
+### 2.1
+Fixed stupid bug removing a single '!'
+
+### 2.0
+Updated plugin to work with the latest WP (3.9.2)
+*   Refactored PHP to simply add a script.
+*   Removed globals from Javascript through a self invoking function.
+*   Refactored to save/publish any page/post/link/comment/widget/whatever.
 
 ### 1.1
 Worked pretty well, but now it's awesome:

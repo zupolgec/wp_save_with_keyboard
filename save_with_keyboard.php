@@ -5,39 +5,13 @@ Plugin URI: http://wordpress.org/extend/plugins/save-with-keyboard
 Description: This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 Author: Mattia Trapani (zupolgec)
 Author URI: http://mtrapani.com
-Version: 1.1
+Version: 2.1
 License: WTFPL (http://sam.zoy.org/wtfpl)
 */
 
-if( is_admin() ) {
-	// array of admin pages and buttons to "click" with Ctrl+S in those pages
-	$button_to_click = array(
-		'post.php' => 'publish',
-		'post-new.php' => 'save-post',
-		'theme-editor.php' => 'submit',
-		'plugin-editor.php' => 'submit'
-	);
-	
-	foreach($button_to_click as $page => $button_id) {
-		add_action( 'admin_footer-'.$page, 'swk_add_script' );
+if (is_admin()&&!function_exists('save_with_keyboard_enqueue')) {
+	function save_with_keyboard_enqueue() {
+		wp_enqueue_script('swk_js',plugin_dir_url(__FILE__).'saveWithKeyboard'.(WP_DEBUG?'':'.min').'.js',array('jquery'));
 	}
-}
-
-function swk_add_script() {
-	global $pagenow, $button_to_click;
-	?>
-	<script>
-		var button_id = "<?php echo $button_to_click[$pagenow]; ?>";
-		
-		jQuery('#'+button_id).attr('title', 'Ctrl+S or Cmd+S to click');
-		
-		jQuery(document).keydown( function(e) {
-			if( (e.keyCode || e.which) == 83 && (e.ctrlKey || e.metaKey) ) {
-				jQuery('#'+button_id).click();
-				
-				return false;
-			}
-		});
-	</script>
-<?php
+	add_action('admin_enqueue_scripts','save_with_keyboard_enqueue');
 }
