@@ -30,7 +30,7 @@ Also adds a little tooltip on the buttons that can be "clicked" with Ctrl+S or C
 
 ## Installation
 
-1. Upload `save-with-keyboard.php` to the `/wp-content/plugins/` directory
+1. Upload the folder `save-with-keyboard` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 ## Frequently Asked Questions
@@ -41,7 +41,8 @@ You can bet it is.
 
 ### Where the shortcut is enabled?
 
-In New Page and New Post pages (saving as draft), in Page and Post edit pages (updating published page/post) and in Themes and Plugins editor pages.
+Everywhere!
+If it's not a post, page, widget or link the plugin checks for the #submit or input[name=submit] selector (used in for instance theme, plugin and profile).
 
 ## Screenshots
 
@@ -52,6 +53,10 @@ Nothing to show you. It works behind the scenes.
 Initial development by @zupolgec, refactoring for v2 by @sjeiti
 
 ## Changelog
+
+### 2.3
+Now the shortcut works even in visual editor!
+Minimum WP version bumped to 3.0
 
 ### 2.2
 Tested up to bumped to 4.8.2

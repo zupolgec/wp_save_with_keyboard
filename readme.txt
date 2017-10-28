@@ -1,9 +1,9 @@
 === Plugin Name ===
 Contributors: zupolgec, sjeiti
 Tags: save, update, publish, keyboard, shortcut, ctrl-s, cmd-s, ctrl+s, cmd+s, ctrl, cmd
-Requires at least: 2.6
-Tested up to: 4.8
-Stable tag: 2.2
+Requires at least: 3.0
+Tested up to: 4.8.2
+Stable tag: 2.3
 
 This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 
@@ -37,6 +37,10 @@ Everywhere!
 If it's not a post, page, widget or link the plugin checks for the #submit or input[name=submit] selector (used in for instance theme, plugin and profile).
 
 == Changelog ==
+
+= 2.3 =
+Now the shortcut works even in visual editor!
+Minimum WP version bumped to 3.0
 
 = 2.2 =
 Tested up to bumped to 4.8.2
