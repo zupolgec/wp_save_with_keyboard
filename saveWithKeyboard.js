@@ -1,7 +1,7 @@
 /*global jQuery*/
 /**
  * Self invoking function for 'Save with keyboard' plugin.
- * @version: 2.1
+ * @version: 2.2
  */
 (function($,undefined){
 	'use strict';
@@ -46,7 +46,7 @@
 		var isButton = $Button.length!==0;
 		if (isButton) {
 			$Document.on('keydown',handleKeydown);
-			$Button.attr('title', 'Ctrl+§§§S or Cmd+S to click');
+			$Button.attr('title', 'Ctrl+S or Cmd+S to click');
 		} else {
 			$Button = undefined;
 			$Document.off('keydown',handleKeydown);
