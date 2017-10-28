@@ -40,6 +40,10 @@ Initial development by @zupolgec, refactoring for v2 by @sjeiti
 
 ## Changelog
 
+### 2.2
+Tested up to bumped to 4.8.2
+Fixed typo in tooltip
+
 ### 2.1
 Fixed stupid bug removing a single '!'
 
