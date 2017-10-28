@@ -1,5 +1,18 @@
 # Save with keyboard
 
+<p>
+  <a href="https://wordpress.org/plugins/save-with-keyboard/">
+    <img src="https://img.shields.io/wordpress/plugin/v/save-with-keyboard.svg?style=flat-square"
+         alt="plugin version">
+    <img src="https://img.shields.io/wordpress/plugin/dt/save-with-keyboard.svg?style=flat-square"
+         alt="plugin downloads">
+    <img src="https://img.shields.io/wordpress/plugin/r/save-with-keyboard.svg?style=flat-square"
+         alt="plugin rating">
+    <img src="https://img.shields.io/wordpress/v/save-with-keyboard.svg?style=flat-square"
+         alt="plugin tested up to">
+  </a>
+</p>
+
 ## Description
 
 This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
