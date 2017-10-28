@@ -28,6 +28,10 @@ It is also *so* smart that saves as draft unpublished posts/pages and updates th
 
 Also adds a little tooltip on the buttons that can be "clicked" with Ctrl+S or Cmd+S.
 
+<a href="http://www.commitstrip.com/en/2013/06/05/ctrl-s/">
+  <img src="http://www.commitstrip.com/wp-content/uploads/2013/06/Strips-Ctrl+S-600-finalenglish.jpg">
+</a>
+
 ## Installation
 
 1. Upload the folder `save-with-keyboard` to the `/wp-content/plugins/` directory
