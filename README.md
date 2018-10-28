@@ -46,7 +46,7 @@ You can bet it is.
 ### Where can I use the shortcut?
 
 Almost everywhere!
-If it's not a post, page, widget, menu or link the plugin checks for the #submit or input[name=submit] selector (used in for instance theme, plugin and profile).
+If it's not a post, page, widget, menu or link the plugin checks for the #submit selector (used, for instance, in theme, plugin and profile).
 
 ## Screenshots
 
