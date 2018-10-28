@@ -2,12 +2,15 @@
 
 /**
  * Self invoking function for 'Save with keyboard' plugin.
- * @version: 2.3
+ * @version: 3.0
  */
 (function($, undefined) {
     'use strict';
     var $Document = $(document),
-        $Button;
+        $SaveButton,
+        handlingKeydown = false,
+        tooltipText,
+        isMacLike = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
 
     /**
      * Initialise on document ready. Checks the DOM to see which button we can use:
@@ -23,6 +26,18 @@
             $Status = $('#original_post_status'),
             sStatus = $Status.val();
 
+        var shortcut = 'Ctrl+S';
+
+        if (isMacLike) {
+            shortcut = 'Cmd(⌘)+S';
+        }
+
+        if (window.SaveWithKeyboard && SaveWithKeyboard.tooltipText) {
+            tooltipText = SaveWithKeyboard.tooltipText.replace('$SHORTCUT$', shortcut);
+        } else {
+            tooltipText = 'Press ' + shortcut + ' to click';
+        }
+
         if ($Status.length) {
             setButton(sStatus === 'publish' ? '#publish' : '#save-post');
         } else if ($Body.hasClass('link-php') || $Body.hasClass('link-add-php')) {
@@ -30,53 +45,137 @@
         } else if ($Body.hasClass('comment-php') || $Body.hasClass('wp-customizer')) {
             setButton('#save');
         } else if ($Body.hasClass('widgets-php')) {
-            $Body.on('click', handleWidgetFocus);
-        } else if (!setButton('#submit')) {
-            setButton('input[name=submit]');
+            lookForButton(function() {
+                var $Button = $('.widget-control-save:visible');
+
+                if ($Button.length === 1) {
+                    return $Button;
+                }
+
+                var $Focus = $(document.activeElement);
+                return $Focus.is(':input') ? $Focus.parents('form:first').find(':submit') : undefined;
+            });
+        } else if ($Body.hasClass('edit-php')) {
+            lookForButton(function() {
+                return $('.inline-editor button.save');
+            });
+        } else if ($Body.hasClass('nav-menus-php')) {
+            setButton('#save_menu_header');
+        } else if ($Body.hasClass('upload-php')) {
+            lookForButton(function() {
+                return $('.imgedit-submit-btn');
+            });
+        } else if ($('#submit').length > 0) {
+            setButton('#submit')
         }
     });
 
     /**
-     * Tries to set the $Button variable. If the selector is valid the keydown event listener is added, otherwise it is removed.
+     * Looks for a button created at runtime. If a button is found, the shortcut is enabled for that button.
+     * @param callback
+     */
+    function lookForButton(callback) {
+        $Document.on('click', function() {
+            var $Button = callback();
+
+            if ($Button && $Button.length) {
+                console.log('Button found!');
+                setButton($Button);
+            } else {
+                console.log('No buttons found!');
+            }
+        });
+    }
+
+    /**
+     * Tries to set the $SaveButton variable. If the selector is valid the keydown event listener is added, otherwise it is removed.
      * @param selector
-     * @returns {boolean} Returns true for a valid selector
      */
     function setButton(selector) {
-        $Button = $(selector);
-        var isButton = $Button.length !== 0;
+        removeTooltip($SaveButton);
 
-        if (isButton) {
+        $SaveButton = $(selector);
+        var isButton = $SaveButton.length === 1;
+
+        if (isButton && $SaveButton.is(":visible")) {
             $Document.on('keydown', handleKeydown);
-            $Button.attr('title', 'Ctrl+S or Cmd+S to click');
+            $Document.on('keyup', handleKeyup);
+
+            addTooltip($SaveButton);
 
             $(document).on('tinymce-editor-init', function(event, editor) {
                 editor.on('KeyDown', handleKeydown);
             });
         } else {
-            $Button = undefined;
+            $SaveButton = undefined;
             $Document.off('keydown', handleKeydown);
+            $Document.off('keyup', handleKeyup);
         }
 
-        //console.log('can I haz button',$Button&&$Button.length); // log
-        return isButton;
+        console.log('Button', $SaveButton !== undefined, $SaveButton); // log
     }
 
     /**
-     * Handles the actual CTRL-s keydown.
+     * Handles the actual keydown event.
      * @param e
      */
     function handleKeydown(e) {
-        if ((e.ctrlKey || e.metaKey) && (e.keyCode || e.which) === 83) {
-            $Button.click();
+        var modifierKeyPressed = (e.ctrlKey && !isMacLike) || (e.metaKey && isMacLike);
+
+        if (modifierKeyPressed && (e.keyCode || e.which) === 83) {
+            if (!handlingKeydown) {
+                handlingKeydown = true;
+
+                if ($SaveButton && $SaveButton.is(':visible')) {
+                    $SaveButton.click();
+                } else {
+                    console.log('Selected button not available/visible');
+                }
+            }
+            
             e.preventDefault();
         }
     }
 
     /**
-     * Checks if the focused element is a widget form input and tries to set the save-button.
+     * Handles the actual keyup event.
+     * @param e
      */
-    function handleWidgetFocus() {
-        var $Focus = $(document.activeElement);
-        setButton($Focus.is(':input') ? $Focus.parents('form:first').find(':submit') : undefined);
+    function handleKeyup(e) {
+        if (handlingKeydown === true) {
+            handlingKeydown = false;
+        }
+    }
+
+    /**
+     * Adds shortcut tooltip on button.
+     */
+    function addTooltip($Button) {
+        var buttonTitle = $Button.attr('title');
+
+        if (buttonTitle && buttonTitle != tooltipText) {
+            buttonTitle += ' - ';
+        } else {
+            buttonTitle = '';
+        }
+
+        buttonTitle += tooltipText;
+
+        $Button.attr('title', buttonTitle);
+    }
+
+    /**
+     * Removes shortcut tooltip on button.
+     */
+    function removeTooltip($Button) {
+        if ($Button) {
+            var cleanedTitle = '';
+
+            if ($Button.attr('title') !== tooltipText) {
+                cleanedTitle = $Button.attr('title').replace(' - ' + tooltipText, '');
+            }
+
+            $Button.attr('title', cleanedTitle);
+        }
     }
 })(jQuery);

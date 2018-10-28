@@ -1,9 +1,12 @@
 === Plugin Name ===
 Contributors: zupolgec, sjeiti
+Donate link: https://www.paypal.me/mattiatrapani
 Tags: save, update, publish, keyboard, shortcut, ctrl-s, cmd-s, ctrl+s, cmd+s, ctrl, cmd
 Requires at least: 3.0
-Tested up to: 4.8.2
-Stable tag: 2.3
+Tested up to: 5.0
+Stable tag: 3.0
+License: WTFPL
+License URI: http://www.wtfpl.net/
 
 This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 
@@ -11,7 +14,7 @@ This plugin lets you save your posts, pages, theme and plugin files in the most 
 
 This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 
-I've coded this plugin because I was tired of pressing Cmd+S and then realize Chrome was trying to save the whole webpage :S
+I've coded this plugin because I was tired of pressing Cmd+S and then realize Chrome was trying to save the whole webpage
 
 After coding this up, I've found in the plugin directory two plugins that did the same thing, but each one had some flaws that convinced me to publish mine.
 
@@ -27,16 +30,21 @@ Also adds a little tooltip on the buttons that can be "clicked" with Ctrl+S or C
 
 == Frequently Asked Questions ==
 
-= Is really so simple to install and use? =
+= Is it really so simple to install and use? =
 
 You can bet it is.
 
-= Where the shortcut is enabled? =
+= Where can I use the shortcut? =
 
-Everywhere!
-If it's not a post, page, widget or link the plugin checks for the #submit or input[name=submit] selector (used in for instance theme, plugin and profile).
+Almost everywhere!
+If it's not a post, page, widget, menu or link the plugin checks for the #submit selector (used, for instance, in theme, plugin and profile).
 
 == Changelog ==
+
+= 3.0 =
+Added support for saving menus.
+Rebuilt tooltip insertion with support for localization.
+Tested up to WP 5.0 with Gutenberg (which doesn't use the plugin 'cause it already handles this shortcut).
 
 = 2.3 =
 Now the shortcut works even in visual editor!
