@@ -8,8 +8,9 @@
     'use strict';
     var $Document = $(document),
         $SaveButton,
-        handlingKeydown = false,
+        doingClick = false,
         tooltipText,
+        shortcutForEditor,
         isMacLike = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
 
     /**
@@ -27,9 +28,11 @@
             sStatus = $Status.val();
 
         var shortcut = 'Ctrl+S';
+        shortcutForEditor = 'ctrl+s';
 
         if (isMacLike) {
             shortcut = 'Cmd(⌘)+S';
+            shortcutForEditor = 'meta+s';
         }
 
         if (window.SaveWithKeyboard && SaveWithKeyboard.tooltipText) {
@@ -104,7 +107,7 @@
             addTooltip($SaveButton);
 
             $(document).on('tinymce-editor-init', function(event, editor) {
-                editor.on('KeyDown', handleKeydown);
+                editor.addShortcut(shortcutForEditor, tooltipText, doClick);
             });
         } else {
             $SaveButton = undefined;
@@ -123,17 +126,26 @@
         var modifierKeyPressed = (e.ctrlKey && !isMacLike) || (e.metaKey && isMacLike);
 
         if (modifierKeyPressed && (e.keyCode || e.which) === 83) {
-            if (!handlingKeydown) {
-                handlingKeydown = true;
-
-                if ($SaveButton && $SaveButton.is(':visible')) {
-                    $SaveButton.click();
-                } else {
-                    console.log('Selected button not available/visible');
-                }
-            }
+            doClick();
             
             e.preventDefault();
+        }
+    }
+
+    /**
+     * Does the fake click.
+     */
+    function doClick() {
+        if (doingClick) {
+            return;
+        }
+
+        doingClick = true;
+
+        if ($SaveButton && $SaveButton.is(':visible')) {
+            $SaveButton.click();
+        } else {
+            console.log('Selected button not available/visible');
         }
     }
 
@@ -142,8 +154,8 @@
      * @param e
      */
     function handleKeyup(e) {
-        if (handlingKeydown === true) {
-            handlingKeydown = false;
+        if (doingClick === true) {
+            doingClick = false;
         }
     }
 
