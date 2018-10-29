@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/mattiatrapani
 Tags: save, update, publish, keyboard, shortcut, ctrl-s, cmd-s, ctrl+s, cmd+s, ctrl, cmd
 Requires at least: 3.0
 Tested up to: 5.0
-Stable tag: 3.0
+Stable tag: 3.0.1
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
@@ -41,33 +41,11 @@ If it's not a post, page, widget, menu or link the plugin checks for the #submit
 
 == Changelog ==
 
+= 3.0.1 =
+Fixed localization support for old WP versions.
+Fixed saving inside TinyMCE editor.
+
 = 3.0 =
 Added support for saving menus.
 Rebuilt tooltip insertion with support for localization.
 Tested up to WP 5.0 with Gutenberg (which doesn't use the plugin 'cause it already handles this shortcut).
-
-= 2.3 =
-Now the shortcut works even in visual editor!
-Minimum WP version bumped to 3.0
-
-= 2.2 =
-Tested up to bumped to 4.8.2
-Fixed typo in tooltip
-
-= 2.1 =
-Fixed stupid bug removing a single '!'
-
-= 2.0 =
-Updated plugin to work with the latest WP (3.9.2)
-*   Refactored PHP to simply add a script.
-*   Removed globals from Javascript through a self invoking function.
-*   Refactored to save/publish any page/post/link/comment/widget/whatever.
-
-= 1.1 =
-Worked pretty well, but now it's awesome:
-*   removed dependency from external libraries (except for jQuery which is anyway loaded by WP backend)
-*   enabled shortcut in Themes and Plugins editor
-*   added tooltip on shortcut-enabled buttons
-
-= 1.0 =
-First version. Should work pretty well already.

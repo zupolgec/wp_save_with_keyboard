@@ -3,7 +3,7 @@
  * Plugin Name: Save with keyboard
  * Plugin URI: https://wordpress.org/plugins/save-with-keyboard/
  * Description: This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
- * Version: 3.0
+ * Version: 3.0.1
  * Author: Mattia Trapani (zupolgec), Ron Valstar (sjeiti)
  * License: WTFPL
  * License URI: http://www.wtfpl.net/

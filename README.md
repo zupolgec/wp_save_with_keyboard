@@ -59,6 +59,10 @@ Initial development by @zupolgec, refactoring for v2 by @sjeiti
 
 ## Changelog
 
+### 3.0.1
+Fixed localization support for old WP versions.
+Fixed saving inside TinyMCE editor.
+
 ### 3.0
 Added support for saving menus.
 Rebuilt tooltip insertion with support for localization.

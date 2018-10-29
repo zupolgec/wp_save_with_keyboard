@@ -2,7 +2,7 @@
 
 /**
  * Self invoking function for 'Save with keyboard' plugin.
- * @version: 3.0
+ * @version: 3.0.1
  */
 (function($, undefined) {
     'use strict';
