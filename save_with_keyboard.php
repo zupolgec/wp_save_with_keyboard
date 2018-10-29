@@ -8,8 +8,13 @@
  * License: WTFPL
  * License URI: http://www.wtfpl.net/
  * Text Domain: save-with-keyboard
- * Domain Path: /languages/
+ * Domain Path: /languages
  */
+
+function save_with_keyboard_load_plugin_textdomain() {
+    load_plugin_textdomain('save-with-keyboard', false, basename( dirname( __FILE__ ) ) . '/languages/');
+}
+add_action('plugins_loaded', 'save_with_keyboard_load_plugin_textdomain');
 
 if (is_admin() && ! function_exists('save_with_keyboard_enqueue')) {
     function save_with_keyboard_enqueue() {
