@@ -8,11 +8,11 @@ Stable tag: 3.0
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
-This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
+Save everything in the most natural way by pressing Ctrl+S (or Cmd+S on Mac).
 
 == Description ==
 
-This plugin lets you save your posts, pages, theme and plugin files in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
+This plugin lets you save your posts, pages, theme and plugin files, widgets, menus, etc. in the most natural way: pressing Ctrl+S (or Cmd+S on Mac).
 
 I've coded this plugin because I was tired of pressing Cmd+S and then realize Chrome was trying to save the whole webpage
 
