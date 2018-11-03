@@ -59,6 +59,9 @@ Initial development by @zupolgec, refactoring for v2 by @sjeiti
 
 ## Changelog
 
+### 3.0.2
+* Fixed loading of minified script.
+
 ### 3.0.1
 * Fixed localization support for old WP versions.
 * Fixed saving inside TinyMCE editor.

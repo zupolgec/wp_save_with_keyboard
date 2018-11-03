@@ -1,5 +1,8 @@
 == Changelog for save-with-keyboard ==
 
+= 3.0.2 =
+Fixed loading of minified script.
+
 = 3.0.1 =
 Fixed localization support for old WP versions.
 Fixed saving inside TinyMCE editor.

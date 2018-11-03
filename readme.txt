@@ -1,10 +1,11 @@
-=== Plugin Name ===
+=== Save with keyboard ===
 Contributors: zupolgec, sjeiti
 Donate link: https://www.paypal.me/mattiatrapani
 Tags: save, update, publish, keyboard, shortcut, ctrl-s, cmd-s, ctrl+s, cmd+s, ctrl, cmd
 Requires at least: 3.0
 Tested up to: 5.0
-Stable tag: 3.0.1
+Stable tag: 3.0.2
+Requires PHP: 5.2.4
 License: WTFPL
 License URI: http://www.wtfpl.net/
 
@@ -40,6 +41,9 @@ Almost everywhere!
 If it's not a post, page, widget, menu or link the plugin checks for the #submit selector (used, for instance, in theme, plugin and profile).
 
 == Changelog ==
+
+= 3.0.2 =
+Fixed loading of minified script.
 
 = 3.0.1 =
 Fixed localization support for old WP versions.
